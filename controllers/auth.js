@@ -13,13 +13,13 @@ const register = async (req,res) => {
     }
     const user = await User.create({...req.body})
     const token = user.createJWT()
-    res.status(StatusCodes.CREATED).json({user:{email:user.email}, token})
+    res.status(StatusCodes.CREATED).json({user:{firstname:user.firstname,lastname:user.lastname,email:user.email}, token})
     
 }
 
 const login = async (req,res) => {
     const {email,password} = req.body
-    if (!email || !password){
+    if (!email || !password ){
         throw new BadRequestError('Please provide email and password')
         // res,status
     }
@@ -33,7 +33,7 @@ const login = async (req,res) => {
         throw new UnauthenticatedError('Invalid Credentioanls')
     }
     const token = user.createJWT()
-    res.status(StatusCodes.OK).json({user:{email:user.email}, token})
+    res.status(StatusCodes.OK).json({user:{firstname:user.firstname,lastname:user.lastname,email:user.email}, token})
 }
 
 module.exports = {register , login}

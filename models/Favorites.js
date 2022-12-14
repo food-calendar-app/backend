@@ -1,27 +1,20 @@
 const mongoose = require('mongoose')
 
-const InformationSchema = new mongoose.Schema({
+const FavoritesSchema = new mongoose.Schema({
     name:{
         type:String,
         required: [true, 'Please provide name'],
         maxlength:50,
-    },
-    ingredients:{
-        type:Array,
-    },
-    date:{
-        type:Date,
-        required: [true,"Please provide Date"]
-    },
-    color:{
-        type:String
     },
     createdBy:{
         type:mongoose.Types.ObjectId,
         ref:'User',
         required:[true,'Please provide user']
     },
+    ingredients:{
+        type:Array,
+    },
 },{timestamps:true})
 
 
-module.exports = mongoose.model('Information',InformationSchema)
+module.exports = mongoose.model('Favorite',FavoritesSchema)

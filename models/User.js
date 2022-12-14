@@ -3,6 +3,18 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 // trim is for a string like "     john     "-> saved as "john"
 const UserSchema = new mongoose.Schema({
+    firstname:{
+        type:String,
+        require: [true, 'Please provide name'],
+        minlength:3,
+        maxlength:50,
+    },
+    lastname:{
+        type:String,
+        require: [true, 'Please provide name'],
+        minlength:3,
+        maxlength:50,
+    },
     email: {
         type:String,
         require: [true, 'Please provide name'],
@@ -23,6 +35,7 @@ UserSchema.pre('save',async function(){
 })
 
 UserSchema.methods.createJWT = function(){
+    console.log(this.email)
     return jwt.sign({userId:this._id,email:this.email},process.env.JWT_SECRET,{expiresIn:process.env.JWT_LIFETIME})
 }
 UserSchema.methods.comparePassword = async function(canditatePassword){
