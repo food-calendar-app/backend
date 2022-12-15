@@ -7,6 +7,7 @@ const cors = require('cors')
 const xss = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 const path = require('path')
+
 const express = require('express')
 const authenticateUser = require('./middleware/authentication')
 const app = express()
