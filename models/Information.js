@@ -16,6 +16,9 @@ const InformationSchema = new mongoose.Schema({
     color:{
         type:String
     },
+    instructions:{
+        type:String
+    },
     createdBy:{
         type:mongoose.Types.ObjectId,
         ref:'User',

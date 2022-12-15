@@ -13,6 +13,9 @@ const FavoritesSchema = new mongoose.Schema({
     },
     ingredients:{
         type:Array,
+    },    
+    instructions:{
+        type:String
     },
 },{timestamps:true})
 

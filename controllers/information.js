@@ -22,7 +22,6 @@ const getInfo = async (req,res) => {
 }
 
 const createInfo = async (req,res) => {
-    console.log(req.body)
     req.body.createdBy = req.user._id
     const info = await Information.create(req.body)
     res.status(StatusCodes.CREATED).json({info})
